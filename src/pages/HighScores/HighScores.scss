@@ -1,0 +1,46 @@
+.high-score {
+    max-width: 600px;
+    margin: 0 auto;
+  
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+  
+      .tab {
+        flex: 1;
+        padding: 10px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+  
+        &.active {
+          background-color: #2980b9;
+        }
+      }
+    }
+  
+    .score-list {
+      ul {
+        list-style: none;
+        padding: 0;
+  
+        .score-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+          border-bottom: 1px solid #ddd;
+  
+          &.crowned {
+            background-color: #f1c40f;
+          }
+  
+          .crown {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+  

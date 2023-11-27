@@ -4,7 +4,6 @@ import './index.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import GameParties from './pages/GameParties/GameParties';
-import Navbar from './components/navbar/navbar';
 import HighScore from './pages/HighScores/HighScores';
  
 ReactDOM.render(

@@ -6,6 +6,8 @@ import Home from './pages/Home/Home'
 import GameParties from './pages/GameParties/GameParties';
 import Navbar from './components/navbar/navbar';
 import HighScore from './pages/HighScores/HighScores';
+import LoginSignUp from './components/LoginSignUp/LoginSignUp';
+import App from './App';
  
 ReactDOM.render(
     <React.StrictMode>
@@ -14,6 +16,9 @@ ReactDOM.render(
                 <Route path="/" element={<Home />} />
                 <Route path="/parties" element={<GameParties />} />
                 <Route path="/scores" element={<HighScore />} />
+                <Route path="/test" element={<App />} />
+                <Route path="/Login" element={<LoginSignUp />} />
+
             </Routes>
                   </Router>
     </React.StrictMode>

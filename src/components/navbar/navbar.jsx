@@ -3,6 +3,7 @@ import "./navbar.scss"
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  
   return (
     <nav className="bg-gray-800 p-4">
       <div className="container mx-auto flex items-center justify-between">

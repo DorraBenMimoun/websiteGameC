@@ -27,13 +27,13 @@ function Home() {
                         <div class="how-to-play">
 
                             <div class="section section-1">
-                                <h4>Bouncing ball<br/>changes color</h4>
                                 <div class="content">
-                                    <div class="ball-demo" id="ball-demo"></div>
+                                    <div class="ball-demo-2 " id="ball-demo"></div>
+                                    <div class="bar bar-2"></div>
+
                                 </div>
                             </div>
                             <div class="section section-2">
-                                <h4>Tap on the bar to switch the colors<br/>(Red, Yellow, Purple)</h4>
                                 <div class="content">
                                     <div class="bar bar-1" data-index="0"></div>
                                     <div class="bar bar-2"></div>
@@ -41,7 +41,6 @@ function Home() {
                                 </div>
                             </div>
                             <div class="section section-3">
-                                <h4>Always match the<br/>ball and bar colors</h4>
                                 <div class="content">
                                     <div class="ball-demo" id="ball-demo"></div>
                                     <div class="bar bar-1"></div>

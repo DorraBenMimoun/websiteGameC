@@ -28,7 +28,6 @@ const HighScore = () => {
     const fetchScores = async () => {
       try {
         const response = await axios.get('http://localhost:3001/scores');
-        console.log("scors",response);
         setScores(response.data);
       } catch (error) {
         console.error('Erreur lors de la récupération des scores :', error);
@@ -41,7 +40,7 @@ const HighScore = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <div className="high-score">
         <h1 className="mt-5 text-white text-2xl">High Score :</h1>
         <div className="tabs">

@@ -440,6 +440,15 @@ a {
     background-color: #FF4571;
     border-radius: 50%;
 }
+.ball, .ball-demo-2 {
+    background: url(https://greghub.github.io/coloron/public/svg/ball.svg) right bottom;
+    background-size: 64px 64px;
+    width: 53px;
+    height: 53px;
+    z-index: 1011;
+    background-color: #FFD145;
+    border-radius: 50%;
+}
 .ball {
     margin-bottom: 250px;
 }

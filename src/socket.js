@@ -5,7 +5,7 @@ let socket = null
 
 export const initializeSocket = () => {
 
-    socket = io("http://localhost:3001/")
+    socket = io(`${process.env.REACT_APP_SERVER_URL}/`)
   
 }
 

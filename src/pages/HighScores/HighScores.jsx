@@ -27,7 +27,7 @@ const HighScore = () => {
   useEffect(() => {
     const fetchScores = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/scores');
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/scores`);
         setScores(response.data);
       } catch (error) {
         console.error('Erreur lors de la récupération des scores :', error);

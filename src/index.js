@@ -16,7 +16,6 @@ ReactDOM.render(
                 <Route path="/scores" element={<HighScore />} />
                 <Route path="/test" element={<App />} />
                 <Route path="/Login" element={<LoginSignUp />} />
-
             </Routes>
         </Router>
     </React.StrictMode>

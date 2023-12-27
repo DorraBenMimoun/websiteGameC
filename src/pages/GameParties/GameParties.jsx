@@ -20,6 +20,7 @@ const GameList = () => {
 
   // Exemple de données de parties en cours
   const games = [
+    { id: '0', creator: 'Test', playersCount: 0, map: 'Nuketown', mode: 'Team Deathmatch' },
     { id: '1', creator: 'Alice', playersCount: 3, map: 'Nuketown', mode: 'Team Deathmatch' },
     { id: '2', creator: 'Bob', playersCount: 2, map: 'Dust II', mode: 'Capture the Flag' },
     { id: '3', creator: 'Charlie', playersCount: 4, map: 'Overwatch', mode: 'Free for All' },

@@ -1,0 +1,76 @@
+
+
+@media (max-width: 600px) {
+    .info-game-container {
+      flex-direction: column !important;
+    }
+    .visitors-container{
+        
+    }
+  }
+  
+.info-game-container{
+    height: auto;
+    margin-top: 50px;
+
+}
+
+.visitors-container{
+    background-color: #4C4660;
+    color: wheat;
+    border-radius:25px;
+    padding: 25px;
+    box-shadow: 10px 5px 2px #FF4571;}
+
+.MuiListItemText-primary, .visitors-container strong{
+    color: #FF4571!important;
+}
+.MuiListItemText-secondary{
+    color: white!important;
+}
+
+
+  .button-enemy{
+    background-color: #4C4660;
+    box-shadow: 10px 5px 0px #FF4571!important;
+    transition: .3s;
+  }
+  .button-enemy:hover{
+    background-color: #4C4660;
+    transform: translateY(3px);
+    box-shadow: 6px 2px 0px #FF4571!important;
+  }
+
+  .button-cooldown:hover{
+    box-shadow: 6px 2px 0px #4C4660!important;
+    background-color: rgb(117, 117, 117)!important;
+  }
+  .button-cooldown{
+    box-shadow: 6px 2px 0px #4C4660!important;
+    background-color: rgb(117, 117, 117)!important;
+
+  }
+  
+/* ActionButtons.css */
+.blocked {
+    opacity: 0.5; 
+    position: relative;
+    cursor: not-allowed; 
+  }
+
+  .blocked::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Ajustez l'opacité selon vos préférences */
+    pointer-events: none; /* Assurez-vous que les événements de pointeur passent à travers le filtre */
+    z-index: 1; /* Ajustez si nécessaire pour que le filtre soit au-dessus du contenu du bouton */
+  }
+
+.blocked:hover {
+    cursor: not-allowed; 
+  }
+

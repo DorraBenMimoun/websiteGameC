@@ -3,6 +3,11 @@ import axios from 'axios'
 import JoinGameModal from '../../components/JoinGameModal/JoinGameModal'
 import { useNavigate } from 'react-router-dom'
 import { useGameContext } from '../../components/Utils/GameContext'
+import GroupIcon from '@mui/icons-material/Group'
+import RestoreIcon from '@mui/icons-material/Restore'
+import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled'
+import PauseCircleFilledIcon from '@mui/icons-material/PauseCircleFilled'
+import './Parties.css'
 
 const GameList = () => {
   const { joinedGame, setJoinedGame } = useGameContext()
@@ -17,14 +22,7 @@ const GameList = () => {
     }
   }, [joinedGame, navigate])
 
-  const [games, setGames] = useState([
-    // {
-    //   gameId: 'test',
-    //   playerName: 'Motaru',
-    //   createdAt: '2023-12-27T20:22:13.463Z',
-    //   visitors: [],
-    // },
-  ])
+  const [games, setGames] = useState([])
   const [openModal, setOpenModal] = useState(false)
   const [selectedGame, setSelectedGame] = useState({})
 
@@ -61,27 +59,29 @@ const GameList = () => {
     const diffInSeconds = Math.floor((now - createdDate) / 1000)
 
     if (diffInSeconds < 60) {
-      return `Créée il y a ${diffInSeconds} secondes`
+      return `il y a ${diffInSeconds} secondes`
     } else if (diffInSeconds < 3600) {
       const minutes = Math.floor(diffInSeconds / 60)
-      return `Créée il y a ${minutes} minute${minutes > 1 ? 's' : ''}`
+      return `il y a ${minutes} minute${minutes > 1 ? 's' : ''}`
     } else {
       const hours = Math.floor(diffInSeconds / 3600)
-      return `Créée il y a ${hours} heure${hours > 1 ? 's' : ''}`
+      return `il y a ${hours} heure${hours > 1 ? 's' : ''}`
     }
   }
 
   return (
     <>
-      <div className="container mx-auto my-8">
+      <div className="parties-container container mx-auto sm:w-full my-8">
         <JoinGameModal
           setOpen={setOpenModal}
           open={openModal}
           game={selectedGame}
         />
-        <h1 className="text-4xl font-bold mb-4">Parties en Cours</h1>
+        <h1 className="sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 text-white  ml-8">
+          Parties en Cours
+        </h1>
 
-        <div className="flex-col gap-4 flex ">
+        <div className="flex flex-col sm:flex-row gap-4">
           {games.length === 0 ? (
             <p className="text-xl text-white bg-black p-4  ">
               Aucune partie en cours pour le moment.
@@ -90,20 +90,34 @@ const GameList = () => {
             games.map((game) => (
               <div
                 key={game.gameCode}
-                className="bg-white p-4 flex justify-center items-center gap-8 rounded-md shadow-md transition-transform transform  hover:translate-x-5 duration-300 ease-in-out"
+                className="bg-white p-4 w-3/4 sm:w-full  m-auto flex flex-col sm:flex-row justify-center items-center gap-4 rounded-md shadow-md transition-transform transform  hover:translate-x-5 duration-300 ease-in-out  "
               >
                 <h2 className="text-xl font-semibold ">
                   Partie de {game.playerName.toUpperCase()}
                 </h2>
-                <p>Joueurs dans la partie : {game.visitors.length}</p>
                 <p>
-                  {game.isPlaying ? (
-                    <span style={{ color: 'green' }}>Partie en cours </span>
-                  ) : (
-                    <span style={{ color: 'red' }}>Partie non commencée</span>
-                  )}
+                  {' '}
+                  <GroupIcon /> {game.visitors.length}
                 </p>
-                <p>{formatTimeAgo(game.createdAt)}</p>
+
+                {game.isPlaying ? (
+                  <>
+                    <p className=" text-white  bg-green-600 p-2 rounded-lg">
+                      <PlayCircleFilledIcon className=" scale-12 mr-2" />
+                      En cours
+                    </p>
+                  </>
+                ) : (
+                  <p className="  text-amber-200 bg-slate-500 p-2 rounded-lg">
+                    <PauseCircleFilledIcon className=" scale-12 mr-2" />
+                    Pas lancée
+                  </p>
+                )}
+
+                <p color="#">
+                  <RestoreIcon className="mr-1" />
+                  {formatTimeAgo(game.createdAt)}
+                </p>
 
                 <button
                   onClick={() => handleJoinGame(game)}

@@ -6,12 +6,29 @@ body{
   padding: 0px;
   margin: 0px;
   min-width: 300px!important;
+
 //   overflow: hidden;
 }
 
 
+
 /* Home.scss */
 
+.download-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  text-decoration: none;
+  color: #fff;
+  background-color: #FF4571;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #4C4660;
+    color: #FF4571;
+  }
+}
 .home-container {
     display: flex;
     flex-direction: column;
@@ -37,21 +54,7 @@ body{
       margin-bottom: 20px;
     }
   
-    .download-button {
-      display: inline-block;
-      padding: 10px 20px;
-      font-size: 1.2em;
-      text-decoration: none;
-      color: #fff;
-      background-color: #FF4571;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-  
-      &:hover {
-        background-color: #4C4660;
-        color: #FF4571;
-      }
-    }
+
   }
   
   .live-games-section {
@@ -115,3 +118,142 @@ body{
     }
   }
   
+  
+.screenshots-section {
+  text-align: center;
+  margin-bottom: 30px;
+
+  h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+
+  .screenshot {
+    margin: 20px 0;
+
+    img {
+      max-width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+
+
+
+/* Nouvelles sections */
+.player-gameplay-section,
+.friend-gameplay-section {
+  margin-top: 40px;
+  padding: 40px;
+  background-color: transparent; /* Fond transparent */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Titres des sections */
+.player-gameplay-section h2,
+.friend-gameplay-section h2 {
+  font-size: 28px;
+  // color: #ff6b81; /* Rose */
+  margin-bottom: 20px;
+}
+
+/* Descriptions des sections */
+.player-gameplay-section p,
+.friend-gameplay-section p {
+  font-size: 18px;
+  color: #ffffff; /* Blanc */
+  margin-bottom: 30px;
+}
+
+/* Étapes de jeu */
+.gameplay-steps {
+  display: flex;
+  justify-content: space-around; /* Disposition horizontale sur les grands écrans */
+  align-items: center;
+  flex-wrap: wrap; /* Retour à la ligne sur les petits écrans */
+}
+
+.gameplay-step {
+  flex-basis: 20%; /* Largeur de chaque étape */
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.gameplay-step img {
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.gameplay-step h3 {
+  font-size: 24px;
+  // color: #ff6b81; /* Rose */
+  margin-bottom: 10px;
+}
+
+.gameplay-step p {
+  font-size: 16px;
+  color: #ffffff; /* Blanc */
+}
+
+
+/* Flèches entre les étapes */
+.arrow {
+  font-size: 2em;
+  color: #ff6b81; /* Rose */
+  margin: 10px 0;
+}
+
+
+.gameplay-section {
+  text-align: center;
+
+  h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+
+  
+  
+
+}
+
+
+.screenshots-section {
+  text-align: center;
+  margin: 20px;
+
+  h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .screenshots-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .screenshot {
+      margin: 10px;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+        &:hover {
+          transform: scale(1.05);
+          transition: transform 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+}

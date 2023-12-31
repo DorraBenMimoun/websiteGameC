@@ -12,6 +12,7 @@ import { GameProvider } from './components/Utils/GameContext'
 import Navbar from './components/navbar/navbar'
 import BottomBar from './components/BottomBar/BottomBar'
 import { SnackbarProvider } from 'notistack'
+import Footer from './components/Footer/Footer'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
@@ -36,6 +37,7 @@ root.render(
             <Route path="/scores" element={<HighScore />} />
             <Route path="/game" element={<GamePage />}></Route>
           </Routes>
+          <Footer />
           <BottomBar />
         </Router>
       </SnackbarProvider>

@@ -36,16 +36,16 @@ const style = {
 }
 
 export default function JoinGameModal({ open, setOpen, game }) {
-  const [username, setUsername] = useState('test')
+  const [username, setUsername] = useState('')
   const [code, setCode] = useState('')
   const [error, setError] = useState('')
 
-  useEffect(() => {
-    if (game && game.gameCode) {
-      setCode(game.gameCode)
-      setUsername('TEST')
-    }
-  }, [game, open])
+  // useEffect(() => {
+  //   if (game && game.gameCode) {
+  //     setCode(game.gameCode)
+  //     setUsername('TEST')
+  //   }
+  // }, [game, open])
 
   const handleChangeCode = (e) => {
     const inputCode = e.target.value

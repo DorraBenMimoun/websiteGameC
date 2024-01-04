@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Popover from '@mui/material/Popover'
 import Typography from '@mui/material/Typography'
+import CircularProgress from '@mui/material/CircularProgress'
 
 import axios from 'axios'
 
@@ -13,6 +14,7 @@ const HighScore = () => {
   const [currentSelection, setCurrentSelection] = useState(null)
   const scoresPerPage = 10
   const [anchorEl, setAnchorEl] = useState(null)
+  const [isLoading, setIsLoading] = useState(true) // New state for loading indicator
 
   const handleTabChange = (tab) => {
     setActiveTab(tab)
@@ -40,12 +42,16 @@ const HighScore = () => {
   useEffect(() => {
     const fetchScores = async () => {
       try {
+        setIsLoading(true)
+
         const response = await axios.get(
           `${process.env.REACT_APP_SERVER_URL}/scores`
         )
         setScores(response.data)
       } catch (error) {
         console.error('Erreur lors de la récupération des scores :', error)
+      } finally {
+        setIsLoading(false)
       }
     }
 
@@ -73,21 +79,27 @@ const HighScore = () => {
 
   return (
     <>
-      <div className="high-score pt-9">
-        <div className="score-list">
-          <div className="main">
-            <div class="containerTab">
-              <div class="tableau">
-                <div class="titleTab">
-                  <button
-                    className={`btnTitle ${
-                      activeTab === 'players' ? 'active' : ''
-                    }`}
-                    onClick={() => handleTabChange('players')}
-                  >
-                    Joueurs
-                  </button>
-                  {/* <button
+      <div className="high-score pt-9" style={{ minHeight: '100vh' }}>
+        {isLoading ? (
+          // Show loading indicator while data is being fetched
+          <div className="flex justify-center ">
+            <CircularProgress color="primary" />
+          </div>
+        ) : (
+          <div className="score-list">
+            <div className="main">
+              <div class="containerTab">
+                <div class="tableau">
+                  <div class="titleTab">
+                    <button
+                      className={`btnTitle ${
+                        activeTab === 'players' ? 'active' : ''
+                      }`}
+                      onClick={() => handleTabChange('players')}
+                    >
+                      Joueurs
+                    </button>
+                    {/* <button
                     className={`btnTitle killer ${
                       activeTab === 'killers' ? 'active' : ''
                     }`}
@@ -95,93 +107,96 @@ const HighScore = () => {
                   >
                     Tueurs
                   </button> */}
-                </div>
-                {activeTab === 'players' && (
-                  <>
-                    <div class="nameList">
-                      <table>
-                        <tbody>
-                          {currentScores.map((player, index) => (
-                            <tr
-                              key={'player score' + index + 1}
-                              className={`score-item ${
-                                player.crown ? 'crowned' : ''
-                              }`}
-                              aria-owns={
-                                open && currentSelection === index
-                                  ? 'mouse-over-popover'
-                                  : undefined
+                  </div>
+                  {activeTab === 'players' && (
+                    <>
+                      <div class="nameList">
+                        <table>
+                          <tbody>
+                            {currentScores.map((player, index) => (
+                              <tr
+                                key={'player score' + index + 1}
+                                className={`score-item ${
+                                  player.crown ? 'crowned' : ''
+                                }`}
+                                aria-owns={
+                                  open && currentSelection === index
+                                    ? 'mouse-over-popover'
+                                    : undefined
+                                }
+                                aria-haspopup="true"
+                                onMouseEnter={(e) =>
+                                  handlePopoverOpen(e, index)
+                                }
+                                onMouseLeave={handlePopoverClose}
+                              >
+                                <td>
+                                  <span class="number-top">
+                                    {indexOfFirstScore + index + 1}.
+                                  </span>
+                                  <span>
+                                    {player.name.charAt(0).toUpperCase() +
+                                      player.name.slice(1).toLowerCase()}{' '}
+                                    {player.crown && <>👑</>}
+                                  </span>
+                                  <Popover
+                                    id="mouse-over-popover"
+                                    sx={{
+                                      pointerEvents: 'none',
+                                    }}
+                                    open={open && currentSelection === index}
+                                    anchorEl={anchorEl}
+                                    onClose={handlePopoverClose}
+                                    anchorOrigin={{
+                                      vertical: 'bottom',
+                                      horizontal: 'left',
+                                    }}
+                                    transformOrigin={{
+                                      vertical: 'top',
+                                      horizontal: 'left',
+                                    }}
+                                    disableRestoreFocus
+                                  >
+                                    {' '}
+                                    <Typography className=" p-4">
+                                      {formatTimeAgo(player.dateTime)}
+                                    </Typography>
+                                  </Popover>
+                                </td>
+                                <td>
+                                  <span>
+                                    <strong>{player.score}</strong> points
+                                  </span>
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                      <div className="pagination">
+                        {Array.from(
+                          { length: Math.ceil(scores.length / scoresPerPage) },
+                          (_, i) => (
+                            <button
+                              key={i + 1}
+                              className={
+                                currentPage === i + 1 ? 'page-active' : ''
                               }
-                              aria-haspopup="true"
-                              onMouseEnter={(e) => handlePopoverOpen(e, index)}
-                              onMouseLeave={handlePopoverClose}
+                              onClick={() => paginate(i + 1)}
                             >
-                              <td>
-                                <span class="number-top">
-                                  {indexOfFirstScore + index + 1}.
-                                </span>
-                                <span>
-                                  {player.name.charAt(0).toUpperCase() +
-                                    player.name.slice(1).toLowerCase()}{' '}
-                                  {player.crown && <>👑</>}
-                                </span>
-                                <Popover
-                                  id="mouse-over-popover"
-                                  sx={{
-                                    pointerEvents: 'none',
-                                  }}
-                                  open={open && currentSelection === index}
-                                  anchorEl={anchorEl}
-                                  onClose={handlePopoverClose}
-                                  anchorOrigin={{
-                                    vertical: 'bottom',
-                                    horizontal: 'left',
-                                  }}
-                                  transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'left',
-                                  }}
-                                  disableRestoreFocus
-                                >
-                                  {' '}
-                                  <Typography className=" p-4">
-                                    {formatTimeAgo(player.dateTime)}
-                                  </Typography>
-                                </Popover>
-                              </td>
-                              <td>
-                                <span>
-                                  <strong>{player.score}</strong> points
-                                </span>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                    <div className="pagination">
-                      {Array.from(
-                        { length: Math.ceil(scores.length / scoresPerPage) },
-                        (_, i) => (
-                          <button
-                            key={i + 1}
-                            className={
-                              currentPage === i + 1 ? 'page-active' : ''
-                            }
-                            onClick={() => paginate(i + 1)}
-                          >
-                            {i + 1}
-                          </button>
-                        )
-                      )}
-                    </div>
-                  </>
-                )}
-                {/* Add a similar block for 'killers' tab */}
+                              {i + 1}
+                            </button>
+                          )
+                        )}
+                      </div>
+                    </>
+                  )}
+                  {/* Add a similar block for 'killers' tab */}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   )

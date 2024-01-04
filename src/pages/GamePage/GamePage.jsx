@@ -28,7 +28,7 @@ const GamePage = ({}) => {
   }, [joinedGame, navigate])
 
   return (
-    <Container>
+    <Container style={{ minHeight: '75vh' }}>
       {joinedGame && (
         <>
           <Box mt={3}>

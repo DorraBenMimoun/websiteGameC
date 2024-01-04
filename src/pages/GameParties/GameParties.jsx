@@ -49,8 +49,12 @@ const GameList = () => {
   }, [])
 
   const handleJoinGame = (game) => {
-    setSelectedGame(game)
-    setOpenModal(true)
+    if (game.visitors.length <= 3) {
+      setSelectedGame(game)
+      setOpenModal(true)
+    } else {
+      alert('Nombre de visiteurs maximum pour cette partie atteint. 😥')
+    }
   }
 
   const formatTimeAgo = (createdAt) => {
@@ -97,7 +101,7 @@ const GameList = () => {
                 </h2>
                 <p>
                   {' '}
-                  <GroupIcon /> {game.visitors.length}
+                  <GroupIcon /> {game.visitors.length} / 4
                 </p>
 
                 {game.isPlaying ? (

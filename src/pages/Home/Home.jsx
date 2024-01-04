@@ -47,9 +47,14 @@ function Home() {
         <p>Téléchargez et jouez au meilleur jeu de plateforme de tir en 2D.</p>
 
         {/* Bouton pour télécharger le jeu */}
-        <Link to="/download" className="download-button">
+        <a
+          href="https://github.com/Mondherlol/GameC/releases/download/game/Survive4Ever.V2.0.Installer.exe"
+          className="download-button"
+          target="_blank"
+          rel="noreferrer"
+        >
           Télécharger
-        </Link>
+        </a>
       </section>
 
       {/* Section Screenshots */}
@@ -104,9 +109,14 @@ function Home() {
 
         <div className="gameplay-steps">
           <div className="gameplay-step">
-            <Link to="/download" className="download-button mb-4">
+            <a
+              href="https://github.com/Mondherlol/GameC/releases/download/game/Survive4Ever.V2.0.Installer.exe"
+              className="download-button mb-4"
+              target="_blank"
+              rel="noreferrer"
+            >
               Survive4Ever V1.0
-            </Link>
+            </a>
             <h3>Téléchargez le jeu</h3>
             <p>Téléchargez la dernière version du jeu. </p>
           </div>

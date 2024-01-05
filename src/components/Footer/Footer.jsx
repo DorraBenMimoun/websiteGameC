@@ -15,7 +15,7 @@ const Footer = () => {
         label="GitHub"
         icon={<GitHubIcon />}
         component={Link}
-        href="https://github.com/votre-utilisateur/survive4ever"
+        href="https://github.com/Mondherlol/GameC/"
         target="_blank"
         rel="noopener noreferrer"
       />

@@ -48,7 +48,7 @@ function Home() {
 
         {/* Bouton pour télécharger le jeu */}
         <a
-          href="https://github.com/Mondherlol/GameC/releases/download/game/Survive4Ever.V2.0.Installer.exe"
+          href="https://github.com/Mondherlol/GameC/releases/download/game/Survive4Ever.V3.0.Installer.exe"
           className="download-button"
           target="_blank"
           rel="noreferrer"
@@ -110,12 +110,12 @@ function Home() {
         <div className="gameplay-steps">
           <div className="gameplay-step">
             <a
-              href="https://github.com/Mondherlol/GameC/releases/download/game/Survive4Ever.V2.0.Installer.exe"
+              href="https://github.com/Mondherlol/GameC/releases/download/game/Survive4Ever.V3.0.Installer.exe"
               className="download-button mb-4"
               target="_blank"
               rel="noreferrer"
             >
-              Survive4Ever V1.0
+              Survive4Ever V3.0
             </a>
             <h3>Téléchargez le jeu</h3>
             <p>Téléchargez la dernière version du jeu. </p>

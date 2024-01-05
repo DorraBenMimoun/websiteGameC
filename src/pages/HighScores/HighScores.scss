@@ -164,12 +164,14 @@
 
 .pagination {
   color: white;
-  justify-content: center;
+  justify-content: left;
   margin: auto;
   display: flex;
   gap: 5px;
   padding: 15px;
   font-size: 25px;
+  overflow: scroll;
+  max-width: 95%;
 }
 
 .page-active {
@@ -182,4 +184,14 @@
 
 .btnTitle:hover {
   transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+  .score-item td{
+    font-size: 22px!important;
+  }
+  .containerTab{
+    width: 85%;
+    margin: auto;
+  }
 }
